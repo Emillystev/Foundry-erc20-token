@@ -6,12 +6,11 @@ import {Test} from "forge-std/Test.sol";
 import {DeployToken} from "../script/DeployToken.s.sol";
 import {Token} from "../src/Token.sol";
 
-
 interface MintableToken {
     function mint(address, uint256) external;
 }
 
-contract TokenTest is Test{
+contract TokenTest is Test {
     Token token;
     DeployToken deployToken;
 
@@ -19,7 +18,8 @@ contract TokenTest is Test{
     address alice;
 
     uint256 public constant STARTING_BALANCE = 100 ether;
-    function setUp() public{
+
+    function setUp() public {
         deployToken = new DeployToken();
         token = deployToken.run();
 
@@ -30,7 +30,7 @@ contract TokenTest is Test{
         token.transfer(bob, STARTING_BALANCE);
     }
 
-    function testBobBalance() external{
+    function testBobBalance() external {
         assertEq(STARTING_BALANCE, token.balanceOf(bob));
     }
 
@@ -43,7 +43,7 @@ contract TokenTest is Test{
         MintableToken(address(token)).mint(address(this), 1);
     }
 
-    function testAllowances() external{
+    function testAllowances() external {
         uint256 initialAllowance = 1000;
 
         // bob approves bob to spend tokens on his behalf
