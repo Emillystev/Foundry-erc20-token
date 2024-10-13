@@ -30,7 +30,7 @@ contract TokenTest is Test {
         token.transfer(bob, STARTING_BALANCE);
     }
 
-    function testBobBalance() external {
+    function testBobBalance() external view {
         assertEq(STARTING_BALANCE, token.balanceOf(bob));
     }
 
@@ -59,3 +59,4 @@ contract TokenTest is Test {
         assertEq(token.balanceOf(bob), STARTING_BALANCE - transferAmount);
     }
 }
+
