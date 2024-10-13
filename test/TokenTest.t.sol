@@ -59,4 +59,3 @@ contract TokenTest is Test {
         assertEq(token.balanceOf(bob), STARTING_BALANCE - transferAmount);
     }
 }
-
